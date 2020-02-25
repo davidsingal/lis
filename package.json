@@ -2,7 +2,7 @@
   "name": "lys",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://davidsingal.github.io/",
+  "homepage": "https://davidsingal.github.io/lis",
   "dependencies": {
     "@material-ui/core": "^4.9.4",
     "@testing-library/jest-dom": "^4.2.4",
