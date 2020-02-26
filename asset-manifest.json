@@ -1,26 +1,30 @@
 {
   "files": {
-    "main.css": "/lis/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/lis/static/js/main.c4248c26.chunk.js",
-    "main.js.map": "/lis/static/js/main.c4248c26.chunk.js.map",
-    "runtime-main.js": "/lis/static/js/runtime-main.c6fb153c.js",
-    "runtime-main.js.map": "/lis/static/js/runtime-main.c6fb153c.js.map",
-    "static/js/2.9f1d5a3f.chunk.js": "/lis/static/js/2.9f1d5a3f.chunk.js",
-    "static/js/2.9f1d5a3f.chunk.js.map": "/lis/static/js/2.9f1d5a3f.chunk.js.map",
-    "index.html": "/lis/index.html",
-    "precache-manifest.c12126d5d9f9633b651a81bbe1565bda.js": "/lis/precache-manifest.c12126d5d9f9633b651a81bbe1565bda.js",
-    "service-worker.js": "/lis/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/lis/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.9f1d5a3f.chunk.js.LICENSE.txt": "/lis/static/js/2.9f1d5a3f.chunk.js.LICENSE.txt",
-    "static/media/2_no_clouds_8k.jpg": "/lis/static/media/2_no_clouds_8k.59704167.jpg",
-    "static/media/elev_bump_4k.jpg": "/lis/static/media/elev_bump_4k.f2f91640.jpg",
-    "static/media/galaxy_starfield_4k.png": "/lis/static/media/galaxy_starfield_4k.1c46fa10.png",
-    "static/media/water_4k.png": "/lis/static/media/water_4k.44670f84.png"
+    "main.css": "/static/css/main.84cb76bb.chunk.css",
+    "main.js": "/static/js/main.0ac4b872.chunk.js",
+    "main.js.map": "/static/js/main.0ac4b872.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4d4038e0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4d4038e0.js.map",
+    "static/css/2.d88ce3aa.chunk.css": "/static/css/2.d88ce3aa.chunk.css",
+    "static/js/2.235fe9e9.chunk.js": "/static/js/2.235fe9e9.chunk.js",
+    "static/js/2.235fe9e9.chunk.js.map": "/static/js/2.235fe9e9.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.bb7884b9fdc12b88a291463b79a4ce7d.js": "/precache-manifest.bb7884b9fdc12b88a291463b79a4ce7d.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.d88ce3aa.chunk.css.map": "/static/css/2.d88ce3aa.chunk.css.map",
+    "static/css/main.84cb76bb.chunk.css.map": "/static/css/main.84cb76bb.chunk.css.map",
+    "static/js/2.235fe9e9.chunk.js.LICENSE.txt": "/static/js/2.235fe9e9.chunk.js.LICENSE.txt",
+    "static/media/2_no_clouds_8k.jpg": "/static/media/2_no_clouds_8k.59704167.jpg",
+    "static/media/DamagedHelmet.gltf": "/static/media/DamagedHelmet.bbe003fc.gltf",
+    "static/media/elev_bump_4k.jpg": "/static/media/elev_bump_4k.f2f91640.jpg",
+    "static/media/galaxy_starfield_4k.png": "/static/media/galaxy_starfield_4k.1c46fa10.png",
+    "static/media/water_4k.png": "/static/media/water_4k.44670f84.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.c6fb153c.js",
-    "static/js/2.9f1d5a3f.chunk.js",
-    "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.c4248c26.chunk.js"
+    "static/js/runtime-main.4d4038e0.js",
+    "static/css/2.d88ce3aa.chunk.css",
+    "static/js/2.235fe9e9.chunk.js",
+    "static/css/main.84cb76bb.chunk.css",
+    "static/js/main.0ac4b872.chunk.js"
   ]
 }
