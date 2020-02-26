@@ -1,10 +1,9 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import earthModel from './DamagedHelmet.gltf';
 
-import earthNoClouds from './2_no_clouds_8k.jpg';
-import earthBumpElevation from './elev_bump_4k.jpg';
-import earthWater from './water_4k.png';
-import galaxy from './galaxy_starfield_4k.png';
+console.log(earthModel)
 
 class EarthGlobe {
   createScenario = () => {
@@ -18,7 +17,7 @@ class EarthGlobe {
     this.renderer.shadowMap.enabled = true;
 
     // Scene
-    this.scene = new THREE.Scene();
+    const scene = this.scene = new THREE.Scene();
 
     // Camera
     this.camera = new THREE.PerspectiveCamera(
@@ -27,7 +26,7 @@ class EarthGlobe {
       0.01,
       100
     );
-    this.camera.position.z = 1.5;
+    this.camera.position.z = 5;
 
     // Ambient light
     const ambientLight	= new THREE.AmbientLight(0x999999);
@@ -41,27 +40,38 @@ class EarthGlobe {
     // Adding to DOM
     this.element.appendChild(this.renderer.domElement);
 
+    var loader = new GLTFLoader();
+
+    loader.load(earthModel, (gltf) => {
+      console.log(gltf);
+      // scene.add(gltf.scene);
+    }, undefined, function ( error ) {
+
+      console.error( error );
+
+    });
+
     // Adding object to scene
-    const geometry   = new THREE.SphereGeometry(0.5, 32, 32);
-    const material = this.material = new THREE.MeshPhongMaterial({
-      map: new THREE.TextureLoader().load(this.basemapUrl || earthNoClouds),
-      bumpMap: new THREE.TextureLoader().load(earthBumpElevation),
-      bumpScale: 0.007,
-      specularMap: new THREE.TextureLoader().load(earthWater),
-      specular: new THREE.Color('grey'),
-    });
+    // const geometry   = new THREE.SphereGeometry(0.5, 32, 32);
+    // const material = this.material = new THREE.MeshPhongMaterial({
+    //   map: new THREE.TextureLoader().load(this.basemapUrl || earthNoClouds),
+    //   bumpMap: new THREE.TextureLoader().load(earthBumpElevation),
+    //   bumpScale: 0.007,
+    //   specularMap: new THREE.TextureLoader().load(earthWater),
+    //   specular: new THREE.Color('grey'),
+    // });
 
-    this.earthMesh = new THREE.Mesh(geometry, material);
-    this.scene.add(this.earthMesh);
+    // this.earthMesh = new THREE.Mesh(geometry, material);
+    // this.scene.add(this.earthMesh);
 
-    // Galaxy background
-    const galaxyGeometry  = new THREE.SphereGeometry(100, 32, 32);
-    const galaxyMaterial  = new THREE.MeshBasicMaterial({
-      map: new THREE.TextureLoader().load(galaxy),
-      side: THREE.BackSide,
-    });
-    this.galaxyMesh  = new THREE.Mesh(galaxyGeometry, galaxyMaterial);
-    this.scene.add(this.galaxyMesh);
+    // // Galaxy background
+    // const galaxyGeometry  = new THREE.SphereGeometry(100, 32, 32);
+    // const galaxyMaterial  = new THREE.MeshBasicMaterial({
+    //   map: new THREE.TextureLoader().load(galaxy),
+    //   side: THREE.BackSide,
+    // });
+    // this.galaxyMesh  = new THREE.Mesh(galaxyGeometry, galaxyMaterial);
+    // this.scene.add(this.galaxyMesh);
 
     // Controls
     const controls = new OrbitControls(this.camera, this.renderer.domElement);
@@ -73,11 +83,11 @@ class EarthGlobe {
   }
 
   setBasemapUrl = (basemapUrl) => {
-    this.material.map = new THREE.TextureLoader().load(basemapUrl);
+    // this.material.map = new THREE.TextureLoader().load(basemapUrl);
   }
 
   resetBasemap = (basemapUrl) => {
-    this.material.map = new THREE.TextureLoader().load(earthNoClouds);
+    // this.material.map = new THREE.TextureLoader().load(earthNoClouds);
   }
 
   start = (element) => {
@@ -94,7 +104,7 @@ class EarthGlobe {
   }
 
   animate = () => {
-    this.earthMesh.rotation.y += 0.0005;
+    // this.earthMesh.rotation.y += 0.0005;
     this.renderScene();
     this.frameId = window.requestAnimationFrame(this.animate);
   }

@@ -1,14 +1,17 @@
 import React, { useCallback, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import { Button, Col, Form, Input, Row } from 'antd';
 import EarthGlobe from '../lib/earth-globe';
 
 const viewerRef = React.createRef();
 
-function GlobeSandbox() {
+function GlobeSandbox({ form }) {
+  const { getFieldDecorator } = form;
+  const formItemLayout = {
+  };
+
   let earthGlobe = new EarthGlobe();
 
-  const onSubmit = useCallback((e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
     const { imageUrl } = e.target;
     earthGlobe.setBasemapUrl(imageUrl.value);
@@ -19,21 +22,42 @@ function GlobeSandbox() {
 
   useEffect(() => {
     earthGlobe.start(viewerRef.current);
+
+    return function cleanup() {
+      earthGlobe.stop();
+      viewerRef.current.removeChild(earthGlobe.renderer.domElement);
+    }
   }, [earthGlobe]);
 
   return (
     <div>
-      <form onSubmit={onSubmit} noValidate autoComplete="off">
-        <TextField id="imageUrl" label="Paste your image URL here" style={{ width: '400px' }} />
-        <Button variant="contained" color="primary" type="submit">Try!</Button>
-      </form>
+      <Row gutter={16}>
+      <Col>
+        <Form layout="inline" onSubmit={handleSubmit} noValidate autoComplete="off">
+          <Form.Item {...formItemLayout}>
+            {getFieldDecorator('imageUrl', {
+              rules: [{ required: true, message: 'Please paste a valid URL!' }],
+            })(
+              <Input placeholder="Paste your image URL here" />
+            )}
+          </Form.Item>
+          <Form.Item {...formItemLayout}>
+            <Button type="primary" htmlType="submit">Try!</Button>
+          </Form.Item>
+          <Form.Item>
+            <Button onClick={resetBasemap}>Reset basemap</Button>
+          </Form.Item>
+        </Form>
+      </Col>
+    </Row>
+    <Row gutter={16}>
       <div
         ref={viewerRef}
-        style={{ width: '800px', height: '600px' }}
+        style={{ width: '100%', height: '720px' }}
       />
-      <Button variant="contained" color="primary" onClick={resetBasemap}>Reset basemap</Button>
+    </Row>
     </div>
   );
 }
 
-export default GlobeSandbox;
+export default Form.create({ name: 'globe_sandbox' })(GlobeSandbox);

@@ -2,12 +2,13 @@
   "name": "lys",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://davidsingal.github.io/lis",
+  "homepage": "http://lis.davidsingal.com",
   "dependencies": {
-    "@material-ui/core": "^4.9.4",
+    "antd": "^3.26.12",
     "bootstrap": "^4.4.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "three": "^0.113.2"
   },
