@@ -3,9 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import earthModel from './DamagedHelmet.gltf';
 
-console.log(earthModel)
-
-class EarthGlobe {
+class ModelViewer {
   createScenario = () => {
     const width = this.element.clientWidth;
     const height = this.element.clientHeight;
@@ -114,4 +112,4 @@ class EarthGlobe {
   }
 }
 
-export default EarthGlobe;
+export default ModelViewer;

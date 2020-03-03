@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import { Layout, Menu, Row, Col } from 'antd';
 import GlobeSandbox from './tools/GlobeSandbox';
-import ModelSandbox from './tools/ModelSandbox';
+// import ModelSandbox from './tools/ModelSandbox';
 import './App.css';
 
 const { Header, Content } = Layout;
@@ -49,7 +49,8 @@ function App() {
               <GlobeSandbox />
             </Route>
             <Route path="/3d-models">
-              <ModelSandbox />
+              {/* <ModelSandbox /> */}
+              Comming soon...
             </Route>
             <Route path="/dem">
               Comming soon...

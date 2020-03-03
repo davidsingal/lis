@@ -3,31 +3,32 @@ import { Button, Col, Form, Input, Row } from 'antd';
 import EarthGlobe from '../lib/earth-globe';
 
 const viewerRef = React.createRef();
+const earthGlobe = new EarthGlobe();
 
 function GlobeSandbox({ form }) {
   const { getFieldDecorator } = form;
-  const formItemLayout = {
-  };
-
-  let earthGlobe = new EarthGlobe();
+  const formItemLayout = {};
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-    const { imageUrl } = e.target;
-    earthGlobe.setBasemapUrl(imageUrl.value);
-    e.target.reset();
-  }, [earthGlobe]);
+    form.validateFields((err, values) => {
+      if (!err) {
+        const { imageUrl } = values;
+        earthGlobe.setBasemapUrl(imageUrl);
+      }
+    });
+  }, [form]);
 
-  const resetBasemap = useCallback(() => earthGlobe.resetBasemap(), [earthGlobe]);
+  const resetBasemap = useCallback(() => earthGlobe.resetBasemap(), []);
 
   useEffect(() => {
     earthGlobe.start(viewerRef.current);
 
-    return function cleanup() {
+    return () => {
       earthGlobe.stop();
       viewerRef.current.removeChild(earthGlobe.renderer.domElement);
-    }
-  }, [earthGlobe]);
+    };
+  }, []);
 
   return (
     <div>

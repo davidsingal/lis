@@ -7,7 +7,7 @@ import earthWater from './water_4k.png';
 import galaxy from './galaxy_starfield_4k.png';
 
 class EarthGlobe {
-  createScenario = () => {
+  createScenario() {
     const width = this.element.clientWidth;
     const height = this.element.clientHeight;
 
@@ -44,7 +44,7 @@ class EarthGlobe {
     // Adding object to scene
     const geometry   = new THREE.SphereGeometry(0.5, 32, 32);
     const material = this.material = new THREE.MeshPhongMaterial({
-      map: new THREE.TextureLoader().load(this.basemapUrl || earthNoClouds),
+      map: new THREE.TextureLoader().load(earthNoClouds),
       bumpMap: new THREE.TextureLoader().load(earthBumpElevation),
       bumpScale: 0.007,
       specularMap: new THREE.TextureLoader().load(earthWater),
@@ -68,7 +68,7 @@ class EarthGlobe {
     controls.update();
   }
 
-  setElement = (element) => {
+  setElement(element) {
     this.element = element;
   }
 
@@ -76,11 +76,11 @@ class EarthGlobe {
     this.material.map = new THREE.TextureLoader().load(basemapUrl);
   }
 
-  resetBasemap = (basemapUrl) => {
+  resetBasemap() {
     this.material.map = new THREE.TextureLoader().load(earthNoClouds);
   }
 
-  start = (element) => {
+  start(element) {
     if (element) this.setElement(element);
     this.createScenario();
 
@@ -89,7 +89,7 @@ class EarthGlobe {
     }
   }
 
-  stop = () => {
+  stop() {
     cancelAnimationFrame(this.frameId);
   }
 
@@ -99,7 +99,7 @@ class EarthGlobe {
     this.frameId = window.requestAnimationFrame(this.animate);
   }
 
-  renderScene = () => {
+  renderScene() {
     this.renderer.render(this.scene, this.camera);
   }
 }

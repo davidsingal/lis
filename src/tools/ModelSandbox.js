@@ -3,22 +3,21 @@ import { Button, Col, Form, Input, Row } from 'antd';
 import EarthGlobe from '../lib/model-visualizer';
 
 const viewerRef = React.createRef();
+const earthGlobe = new EarthGlobe();
 
 function ModelSandbox({ form }) {
   const { getFieldDecorator } = form;
   const formItemLayout = {
   };
 
-  let earthGlobe = new EarthGlobe();
-
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-    const { imageUrl } = e.target;
-    earthGlobe.setBasemapUrl(imageUrl.value);
+    const { modelUrl } = e.target;
+    earthGlobe.setBasemapUrl(modelUrl.value);
     e.target.reset();
-  }, [earthGlobe]);
+  }, []);
 
-  const resetBasemap = useCallback(() => earthGlobe.resetBasemap(), [earthGlobe]);
+  const resetBasemap = useCallback(() => earthGlobe.resetBasemap(), []);
 
   useEffect(() => {
     earthGlobe.start(viewerRef.current);
@@ -27,7 +26,7 @@ function ModelSandbox({ form }) {
       earthGlobe.stop();
       viewerRef.current.removeChild(earthGlobe.renderer.domElement);
     }
-  }, [earthGlobe]);
+  }, []);
 
   return (
     <div>
@@ -35,7 +34,7 @@ function ModelSandbox({ form }) {
         <Col>
           <Form layout="inline" onSubmit={handleSubmit} noValidate autoComplete="off">
             <Form.Item {...formItemLayout}>
-              {getFieldDecorator('imageUrl', {
+              {getFieldDecorator('modelUrl', {
                 rules: [{ required: true, message: 'Please paste a valid URL!' }],
               })(
                 <Input placeholder="Paste your image URL here" />
